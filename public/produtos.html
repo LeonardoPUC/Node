@@ -132,20 +132,20 @@
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Descrição</label>
-						<input type="text" class="form-control" required>
+						<input id="descricao" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Valor</label>
-						<input type="email" class="form-control" required>
+						<input id="valor" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Marca</label>
-						<textarea class="form-control" required></textarea>
-					</div>			
+						<input id="marca" type="text" class="form-control" required>
+					</div>					
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input onclick="editarProduto()" type="submit" class="btn btn-info" value="Save">
 				</div>
 			</form>
 		</div>
