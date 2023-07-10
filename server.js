@@ -1,5 +1,5 @@
 require('dotenv').config()
-console.log('Chave', process.env.SECRET_KEY);
+// console.log('Chave', process.env.SECRET_KEY);
 
 const express = require('express'); // Importa o módulo do Express Framework
 const app = express(); // Inicializa um objeto de aplicação Express
@@ -36,5 +36,5 @@ app.use ((req, res) => {
 const port = 3000
 const servidor = '127.0.0.1'
 app.listen(port, function () {
-  console.log(`Servidor rodando em http://${servidor}:${port}`);
+//   console.log(`Servidor rodando em http://${servidor}:${port}`);
 });

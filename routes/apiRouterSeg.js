@@ -42,8 +42,9 @@ routerSeg.post('/login', (req, res) => {
 routerSeg.post('/register', (req, res) => {
     knex('usuario')
         .insert({
-            nome: req.body.nome,
-            login: req.body.login,
+            // nome: req.body.nome,
+            // login: req.body.login,
+            login: req.body.nome,
             senha: bcrypt.hashSync(req.body.senha, 8),
             email: req.body.email
         }, ['id'])

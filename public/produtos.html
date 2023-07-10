@@ -25,6 +25,8 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Produto</span></a>					
+						<a href="#filterEmployeeModal" class="btn btn-success" data-toggle="modal" style="display: inline-block;"><i class="material-icons">&#xE152;</i> <span>Filter Produto</span></a>
+						<a href="#defilterEmployeeModal" class="btn btn-success" data-toggle="modal"style="display: none;"><i class="material-icons">&#xE152;</i> <span>Defilter Produto</span></a>					
 					</div>
 				</div>
 			</div>
@@ -44,7 +46,50 @@
 	</div>        
 </div>
 <label id="idacao"></label>
-<!-- Edit Modal HTML -->
+<!-- Edit Modal FILTER HTML -->
+<div id="filterEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Filter Produto</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Id</label>
+						<input type="text" class="form-control" id="product-id" required>
+					</div>					
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit" class="btn btn-success" value="Filter" onclick="Filtrar()">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Desfiltrar Modal HTML -->
+<div id="defilterEmployeeModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Desfiltrar Produtos</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Tem certeza de que deseja desfiltrar os registros?</p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input type="submit" class="btn btn-danger" value="Defilter" onclick="Desfiltrar()">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Edit Modal ADD HTML -->
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -55,21 +100,17 @@
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label>Name</label>
+						<label>Descrição</label>
 						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Valor</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
+						<label>Marca</label>
 						<textarea class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
-					</div>					
+					</div>			
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -85,26 +126,22 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Edit Employee</h4>
+					<h4 class="modal-title">Edit Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
 					<div class="form-group">
-						<label>Name</label>
+						<label>Descrição</label>
 						<input type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Valor</label>
 						<input type="email" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
+						<label>Marca</label>
 						<textarea class="form-control" required></textarea>
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
-					</div>					
+					</div>			
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -120,12 +157,12 @@
 		<div class="modal-content">
 			<form>
 				<div class="modal-header">						
-					<h4 class="modal-title">Delete Employee</h4>
+					<h4 class="modal-title">Delete Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-					<p>Are you sure you want to delete these Records?</p>
-					<p class="text-warning"><small>This action cannot be undone.</small></p>
+					<p>Tem certeza de que deseja excluir esse registro?</p>
+					<p class="text-warning"><small>Esta ação não pode ser desfeita.</small></p>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
