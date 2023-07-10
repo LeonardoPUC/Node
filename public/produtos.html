@@ -13,9 +13,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="produtos.css">
 <script type="text/javascript" src="produtos.js"></script>
+<script type="text/javascript" src="toast/jquery.toast.js"></script>
+<link rel="stylesheet" href="toast/jquery.toast.css">
 </head>
 <body>
 <div class="container-xl">
+	<a class="btn btn-default" onclick="Deslogar()" style="float: right;">Deslogar</a>
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -24,9 +27,9 @@
 						<h2>Gerenciar <b>Produtos</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Produto</span></a>					
-						<a href="#filterEmployeeModal" class="btn btn-success" data-toggle="modal" style="display: inline-block;"><i class="material-icons">&#xE152;</i> <span>Filter Produto</span></a>
-						<a href="#defilterEmployeeModal" class="btn btn-success" data-toggle="modal"style="display: none;"><i class="material-icons">&#xE152;</i> <span>Defilter Produto</span></a>					
+						<a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Produto</span></a>					
+						<a id="btnFilter" href="#filterModal" class="btn btn-success" data-toggle="modal" style="display: inline-block;"><i class="material-icons">&#xE152;</i> <span>Filter Produto</span></a>
+						<a id="btnDefilter" class="btn btn-success" style="display: none;" onclick="Desfiltrar()"><i class="material-icons">&#xE152;</i> <span>Defilter Produto</span></a>					
 					</div>
 				</div>
 			</div>
@@ -47,10 +50,10 @@
 </div>
 <label id="idacao"></label>
 <!-- Edit Modal FILTER HTML -->
-<div id="filterEmployeeModal" class="modal fade">
+<div id="filterModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form onsubmit="return false;">
 				<div class="modal-header">						
 					<h4 class="modal-title">Filter Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -69,31 +72,12 @@
 		</div>
 	</div>
 </div>
-<!-- Desfiltrar Modal HTML -->
-<div id="defilterEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">						
-					<h4 class="modal-title">Desfiltrar Produtos</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">					
-					<p>Tem certeza de que deseja desfiltrar os registros?</p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Defilter" onclick="Desfiltrar()">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+
 <!-- Edit Modal ADD HTML -->
-<div id="addEmployeeModal" class="modal fade">
+<div id="addModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form onsubmit="return false;">
 				<div class="modal-header">						
 					<h4 class="modal-title">Add Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -101,30 +85,30 @@
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Descrição</label>
-						<input type="text" class="form-control" required>
+						<input id="descricaoadd" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Valor</label>
-						<input type="email" class="form-control" required>
+						<input id="valoradd" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label>Marca</label>
-						<textarea class="form-control" required></textarea>
+						<input id="marcaadd" type="text" class="form-control" required>
 					</div>			
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" value="Add">
+					<input type="submit" class="btn btn-success" value="Add" onclick="AddProduto()">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
+<div id="editModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form onsubmit="return false;">
 				<div class="modal-header">						
 					<h4 class="modal-title">Edit Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -145,17 +129,17 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input onclick="editarProduto()" type="submit" class="btn btn-info" value="Save">
+					<input onclick="EditarProduto()" type="submit" class="btn btn-info" value="Save">
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+<div id="deleteModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form onsubmit="return false;">
 				<div class="modal-header">						
 					<h4 class="modal-title">Delete Produto</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

@@ -42,16 +42,14 @@ routerSeg.post('/login', (req, res) => {
 routerSeg.post('/register', (req, res) => {
     knex('usuario')
         .insert({
-            // nome: req.body.nome,
-            // login: req.body.login,
-            login: req.body.nome,
-            senha: bcrypt.hashSync(req.body.senha, 8),
-            email: req.body.email
+            nome: req.body.nome,
+            email: req.body.email,
+            login: req.body.login,
+            senha: bcrypt.hashSync(req.body.senha, 8)
         }, ['id'])
         .then((result) => {
             let usuario = result[0]
-            res.status(200).json({ id: usuario.id })
-            return
+            res.status(200).json({ id: usuario.id, message: 'Cadastro realizado com sucesso.' })
         })
         .catch(err => {
             res.status(500).json({
